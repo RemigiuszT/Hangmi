@@ -1,0 +1,18 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mdc-snackbar.green-snackbar {
+  background-color: #4caf50 !important;
+  text-align: center;
+}
+
+.mdc-snackbar.red-snackbar {
+  background-color: #f44336 !important;
+  text-align: center;
+}

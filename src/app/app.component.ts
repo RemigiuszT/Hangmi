@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { words } from './words';
 
 @Component({
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'Hangmi';
   word = '';
   hiddenWord: string[] = [];
-  letters = 'aąbcćdeęfghijklłmnńoóprsśtuwyzźż';
+  letters = 'aąbcćdeęfghijklłmnńoóprsśtuwyzźż'.split('');
   usedLetters = '';
   lives = 7;
   score = 0;
@@ -26,11 +27,12 @@ export class AppComponent {
     { playerName: 'David', score: 32 },
   ];
 
-  constructor() {
+  constructor(private snackBar: MatSnackBar) {
     this.startGame();
   }
 
   showResults: boolean = false;
+  showWinPopup: boolean = false;
 
   startGame() {
     this.lives = 7;
@@ -76,12 +78,25 @@ export class AppComponent {
 
     if (this.hiddenWord.join('') === this.word) {
       this.score += this.lives * 20;
-      alert('You won!');
-      this.showWord = true;
+      this.snackBar.open('Correct!', '', {
+        duration: 2000,
+        panelClass: ['green-snackbar'],
+        verticalPosition: 'top',
+        horizontalPosition: 'center',
+      });
+      setTimeout(() => {
+        this.startGame();
+      }, 2000);
     } else if (this.lives <= 0) {
-      alert('Defeat!');
-      this.showWord = true;
-      this.showResultsPopup();
+      this.snackBar.open('Defeat!', '', {
+        duration: 2000,
+        panelClass: ['red-snackbar'],
+        verticalPosition: 'top',
+        horizontalPosition: 'center',
+      });
+      setTimeout(() => {
+        this.showResultsPopup();
+      }, 2000);
     }
   }
 
