@@ -8,16 +8,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HangmanDrawingComponent } from './components/hangman-drawing/hangman-drawing.component';
 import { popUp } from './services/pop-up.service';
+import { GameResultsService } from './services/game-result.service';
+import { GameInfoComponent } from './components/game-info/game-info.component';
 
 @NgModule({
-  declarations: [AppComponent, HangmanDrawingComponent],
+  declarations: [AppComponent, HangmanDrawingComponent, GameInfoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
   ],
-  providers: [popUp],
+  providers: [GameResultsService, popUp],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
