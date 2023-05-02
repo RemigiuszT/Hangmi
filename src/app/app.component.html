@@ -1,5 +1,9 @@
-<div class="container" (keydown)="onKeydown($event)" tabindex="0">
-  <h1>Hangman</h1>
+<div
+  class="container mx-auto px-8 py-12 bg-white rounded-lg shadow-lg"
+  (keydown)="onKeydown($event)"
+  tabindex="0"
+>
+  <h1 class="text-6xl font-bold mb-6">Hangman</h1>
   <app-game-info
     [category]="category"
     [lives]="lives"
@@ -8,42 +12,62 @@
     [word]="word"
     [score]="score"
   ></app-game-info>
-  <div class="word">
-    <span *ngFor="let letter of hiddenWord">{{ letter }}</span>
+  <div class="word mb-6">
+    <span
+      *ngFor="let letter of hiddenWord"
+      class="inline-block px-2 py-1 text-2xl"
+      >{{ letter }}</span
+    >
   </div>
-  <div class="letters">
+  <div class="letters grid grid-cols-9 gap-2 mb-6">
     <button
       *ngFor="let letter of letters"
       (click)="guessLetter(letter)"
       [disabled]="usedLetters.includes(letter)"
+      class="py-2 bg-gray-200 text-gray-700 font-bold rounded disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-gray-300 focus:outline-none focus:shadow-outline"
     >
       {{ letter }}
     </button>
   </div>
   <div class="actions">
-    <button (click)="newGame()">New game</button>
+    <button
+      (click)="newGame()"
+      class="py-3 px-5 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+    >
+      New game
+    </button>
   </div>
 </div>
 
-<div class="results-overlay" *ngIf="showResults">
-  <div class="results-container" *ngIf="showResults">
-    <div class="results-header">
-      <h2>Wyniki</h2>
-      <span class="close-button" (click)="closeResultsPopup()">X</span>
+<div
+  class="results-overlay fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center"
+  *ngIf="showResults"
+>
+  <div
+    class="results-container bg-white p-8 rounded shadow-lg max-w-md w-full"
+    *ngIf="showResults"
+  >
+    <div class="results-header flex justify-between items-center mb-6">
+      <h2 class="text-x2 font-bold">Scoreboard</h2>
+      <span
+        class="close-button text-x2 font-bold cursor-pointer mb-2"
+        (click)="closeResultsPopup()"
+        >X</span
+      >
     </div>
-    <table>
+    <table class="w-full text-left">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Imię gracza</th>
-          <th>Wynik</th>
+          <th class="py-2">#</th>
+          <th class="py-2">Player name</th>
+          <th class="py-2">Score</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let result of gameResultsService.results; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ result.playerName }}</td>
-          <td>{{ result.score }}</td>
+          <td class="py-2">{{ i + 1 }}</td>
+          <td class="py-2">{{ result.playerName }}</td>
+          <td class="py-2">{{ result.score }}</td>
         </tr>
       </tbody>
     </table>

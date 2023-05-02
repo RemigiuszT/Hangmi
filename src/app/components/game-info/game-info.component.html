@@ -1,11 +1,11 @@
-<div class="game-info">
-  <div class="hangman-container">
+<div class="game-info bg-white p-12 rounded shadow-lg mb-6">
+  <div class="hangman-container mb-4">
     <app-hangman-drawing [lives]="lives"></app-hangman-drawing>
   </div>
 
-  <p>Category: {{ category }}</p>
-  <p>Lives: {{ lives }}</p>
-  <p>Used Letters: {{ usedLetters }}</p>
-  <p *ngIf="showWord">Your word: {{ word }}</p>
+  <p class="mb-2">Category: {{ category }}</p>
+  <p class="mb-2">Lives: {{ lives }}</p>
+  <p class="mb-2">Used Letters: {{ usedLetters }}</p>
+  <p class="mb-2" *ngIf="showWord">Your word: {{ word }}</p>
   <p>Score: {{ score }}</p>
 </div>

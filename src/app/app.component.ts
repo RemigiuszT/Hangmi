@@ -6,13 +6,13 @@ import { popUp } from './services/pop-up.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'Hangmi';
   word = '';
   hiddenWord: string[] = [];
-  letters = 'aąbcćdeęfghijklłmnńoóprsśtuwyzźż'.split('');
+  letters = 'qwertyuiopasdfghjklzxcvbnm'.split('');
   usedLetters = '';
   lives = 7;
   score = 0;
