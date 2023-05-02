@@ -37,7 +37,10 @@ export class AppComponent {
     this.startGame();
   }
 
-  startGame() {
+  startGame(newGame: boolean = false) {
+    if (newGame) {
+      this.score = 0;
+    }
     this.lives = 7;
     this.usedLetters = '';
     const randomWordObj = this.getRandomWord();
@@ -45,7 +48,10 @@ export class AppComponent {
     this.category = randomWordObj.category;
     this.hiddenWord = Array(this.word.length).fill('_');
     this.showWord = false;
-    this.score = 0;
+  }
+
+  newGame() {
+    this.startGame(true);
   }
 
   getRandomWord() {
@@ -100,6 +106,7 @@ export class AppComponent {
       });
       setTimeout(() => {
         this.showResultsPopup();
+        this.startGame(true);
       }, 2000);
     }
   }

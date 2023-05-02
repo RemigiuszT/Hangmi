@@ -5,11 +5,11 @@
       <app-hangman-drawing [lives]="lives"></app-hangman-drawing>
     </div>
 
-    <p>Kategoria: {{ category }}</p>
-    <p>Pozostałe życia: {{ lives }}</p>
-    <p>Użyte litery: {{ usedLetters }}</p>
-    <p *ngIf="showWord">Wylosowane słowo: {{ word }}</p>
-    <p>Wynik: {{ score }}</p>
+    <p>Category: {{ category }}</p>
+    <p>Lives: {{ lives }}</p>
+    <p>Used Letters: {{ usedLetters }}</p>
+    <p *ngIf="showWord">Your word: {{ word }}</p>
+    <p>Score: {{ score }}</p>
   </div>
   <div class="word">
     <span *ngFor="let letter of hiddenWord">{{ letter }}</span>
@@ -24,7 +24,7 @@
     </button>
   </div>
   <div class="actions">
-    <button (click)="startGame()">Nowa gra</button>
+    <button (click)="newGame()">New game</button>
   </div>
 </div>
 
