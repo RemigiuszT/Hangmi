@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { words } from './words';
 import { GameResultsService } from './services/game-result.service';
-import { KeyboardInputService } from './services/keyboard-input.service';
+import { popUp } from './services/pop-up.service';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +32,7 @@ export class AppComponent {
 
   constructor(
     public gameResultsService: GameResultsService,
-    private keyboardInputService: KeyboardInputService
+    private popUp: popUp
   ) {
     this.startGame();
   }
@@ -88,12 +88,12 @@ export class AppComponent {
 
     if (this.hiddenWord.join('') === this.word) {
       this.score += this.lives * 20;
-      this.keyboardInputService.openSnackBar('Correct!', 'green-snackbar');
+      this.popUp.openSnackBar('Correct!', 'green-snackbar');
       setTimeout(() => {
         this.startGame();
       }, 2000);
     } else if (this.lives <= 0) {
-      this.keyboardInputService.openSnackBar('Defeat!', 'red-snackbar');
+      this.popUp.openSnackBar('Defeat!', 'red-snackbar');
       setTimeout(() => {
         this.showResultsPopup();
         this.startGame(true);
