@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HangmanDrawingComponent } from './components/hangman-drawing/hangman-drawing.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HangmanDrawingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

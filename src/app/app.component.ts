@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { words } from './words';
+import { GameResultsService } from './services/game-result.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,8 @@ export class AppComponent {
   score = 0;
   showWord = false;
   category = '';
+  showResults: boolean = false;
+  showWinPopup: boolean = false;
 
   results: any[] = [
     { playerName: 'Jan', score: 5 },
@@ -27,12 +30,12 @@ export class AppComponent {
     { playerName: 'David', score: 32 },
   ];
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(
+    private snackBar: MatSnackBar,
+    public gameResultsService: GameResultsService
+  ) {
     this.startGame();
   }
-
-  showResults: boolean = false;
-  showWinPopup: boolean = false;
 
   startGame() {
     this.lives = 7;
@@ -42,6 +45,7 @@ export class AppComponent {
     this.category = randomWordObj.category;
     this.hiddenWord = Array(this.word.length).fill('_');
     this.showWord = false;
+    this.score = 0;
   }
 
   getRandomWord() {
@@ -108,9 +112,9 @@ export class AppComponent {
   }
 
   showResultsPopup() {
-    const playerName = 'Gracz githuba';
-    this.addResult(playerName, this.score);
-    this.sortResults();
+    const playerName = 'Github Player';
+    this.gameResultsService.addResult(playerName, this.score);
+    this.gameResultsService.sortResults();
 
     this.showResults = true;
   }
@@ -120,13 +124,7 @@ export class AppComponent {
   }
 
   addResult(playerName: string, score: number): void {
-    this.results.push({ playerName, score });
-    this.sortResults();
-  }
-
-  sortResults() {
-    this.results.sort((a, b) => {
-      return b.score - a.score;
-    });
+    this.gameResultsService.addResult(playerName, score);
+    this.gameResultsService.sortResults();
   }
 }
