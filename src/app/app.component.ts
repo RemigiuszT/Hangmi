@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { words } from './words';
 import { GameResultsService } from './services/game-result.service';
+import { KeyboardInputService } from './services/keyboard-input.service';
 
 @Component({
   selector: 'app-root',
@@ -31,8 +31,8 @@ export class AppComponent {
   ];
 
   constructor(
-    private snackBar: MatSnackBar,
-    public gameResultsService: GameResultsService
+    public gameResultsService: GameResultsService,
+    private keyboardInputService: KeyboardInputService
   ) {
     this.startGame();
   }
@@ -88,22 +88,12 @@ export class AppComponent {
 
     if (this.hiddenWord.join('') === this.word) {
       this.score += this.lives * 20;
-      this.snackBar.open('Correct!', '', {
-        duration: 2000,
-        panelClass: ['green-snackbar'],
-        verticalPosition: 'top',
-        horizontalPosition: 'center',
-      });
+      this.keyboardInputService.openSnackBar('Correct!', 'green-snackbar');
       setTimeout(() => {
         this.startGame();
       }, 2000);
     } else if (this.lives <= 0) {
-      this.snackBar.open('Defeat!', '', {
-        duration: 2000,
-        panelClass: ['red-snackbar'],
-        verticalPosition: 'top',
-        horizontalPosition: 'center',
-      });
+      this.keyboardInputService.openSnackBar('Defeat!', 'red-snackbar');
       setTimeout(() => {
         this.showResultsPopup();
         this.startGame(true);

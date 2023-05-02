@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HangmanDrawingComponent } from './components/hangman-drawing/hangman-drawing.component';
+import { KeyboardInputService } from './services/keyboard-input.service';
 
 @NgModule({
   declarations: [AppComponent, HangmanDrawingComponent],
@@ -16,7 +17,7 @@ import { HangmanDrawingComponent } from './components/hangman-drawing/hangman-dr
     MatSnackBarModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [KeyboardInputService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
