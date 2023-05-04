@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { words } from './words';
 import { GameResultsService } from './services/game-result.service';
 import { popUp } from './services/pop-up.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NicknameModalComponent } from './components/nickname-modal/nickname-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -10,31 +12,28 @@ import { popUp } from './services/pop-up.service';
 })
 export class AppComponent {
   title = 'Hangmi';
-  word = '';
+  playerName: string = '';
   hiddenWord: string[] = [];
+  word = '';
+  category = '';
   letters = 'qwertyuiopasdfghjklzxcvbnm'.split('');
   usedLetters = '';
   lives = 7;
   score = 0;
   showWord = false;
-  category = '';
   showResults: boolean = false;
   showWinPopup: boolean = false;
 
-  results: any[] = [
-    { playerName: 'Jan', score: 5 },
-    { playerName: 'Anna', score: 8 },
-    { playerName: 'Jordan', score: 10 },
-    { playerName: 'Kerry', score: 12 },
-    { playerName: 'Sam', score: 16 },
-    { playerName: 'David', score: 32 },
-  ];
-
   constructor(
     public gameResultsService: GameResultsService,
-    private popUp: popUp
+    private popUp: popUp,
+    private dialog: MatDialog
   ) {
     this.startGame();
+  }
+
+  ngOnInit() {
+    this.showNicknameModal();
   }
 
   startGame(newGame: boolean = false) {
@@ -109,8 +108,7 @@ export class AppComponent {
   }
 
   showResultsPopup() {
-    const playerName = 'Github Player';
-    this.gameResultsService.addResult(playerName, this.score);
+    this.gameResultsService.addResult(this.playerName, this.score);
     this.gameResultsService.sortResults();
 
     this.showResults = true;
@@ -123,5 +121,20 @@ export class AppComponent {
   addResult(playerName: string, score: number): void {
     this.gameResultsService.addResult(playerName, score);
     this.gameResultsService.sortResults();
+  }
+
+  showNicknameModal() {
+    const dialogRef = this.dialog.open(NicknameModalComponent, {
+      disableClose: true,
+    });
+
+    dialogRef.componentInstance.onNicknameSaved.subscribe((nickname) => {
+      this.playerName = nickname;
+      document.addEventListener('keydown', this.onKeydown.bind(this));
+    });
+
+    dialogRef.afterClosed().subscribe((nickname) => {
+      document.removeEventListener('keydown', this.onKeydown.bind(this));
+    });
   }
 }

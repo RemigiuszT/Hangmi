@@ -1,0 +1,29 @@
+.nickname-modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.nickname-modal-content .nickname-modal-form-field {
+  width: 100%;
+}
+
+.nickname-modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.nickname-modal-actions button {
+  margin: 0;
+}
+
+.nickname-input {
+  color: black;
+  text-align: center;
+}
+
+.nickname-input::placeholder {
+  color: rgba(0, 0, 0, 0.54);
+}

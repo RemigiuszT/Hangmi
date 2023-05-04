@@ -1,0 +1,18 @@
+<h2 mat-dialog-title class="nickname-modal-title">Enter your nickname</h2>
+<mat-dialog-content class="nickname-modal-content">
+  <mat-form-field class="nickname-modal-form-field">
+    <input
+      matInput
+      [(ngModel)]="nickname"
+      placeholder="Nickname"
+      class="nickname-input"
+      autofocus
+      (keydown.enter)="saveNickname(nickname)"
+    />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="nickname-modal-actions">
+  <button mat-button (click)="saveNickname(nickname)" [disabled]="!nickname">
+    OK
+  </button>
+</mat-dialog-actions>
