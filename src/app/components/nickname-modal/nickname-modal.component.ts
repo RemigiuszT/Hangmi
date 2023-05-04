@@ -9,11 +9,16 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class NicknameModalComponent {
   @Output() onNicknameSaved = new EventEmitter<string>();
   nickname: string = '';
+  nicknameInvalid: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<NicknameModalComponent>) {}
 
   saveNickname(nickname: string): void {
-    this.onNicknameSaved.emit(nickname);
-    this.dialogRef.close();
+    if (nickname.trim().length < 2) {
+      this.nicknameInvalid = true;
+    } else {
+      this.onNicknameSaved.emit(nickname.trim());
+      this.dialogRef.close();
+    }
   }
 }

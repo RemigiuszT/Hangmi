@@ -10,6 +10,9 @@
       (keydown.enter)="saveNickname(nickname)"
     />
   </mat-form-field>
+  <p class="nickname-modal-error" *ngIf="nicknameInvalid">
+    Nickname should have at least 2 letters.
+  </p>
 </mat-dialog-content>
 <mat-dialog-actions class="nickname-modal-actions">
   <button mat-button (click)="saveNickname(nickname)" [disabled]="!nickname">
