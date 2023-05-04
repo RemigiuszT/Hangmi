@@ -24,6 +24,7 @@
       *ngFor="let letter of letters"
       (click)="guessLetter(letter)"
       [disabled]="usedLetters.includes(letter)"
+      [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
       class="py-2 bg-gray-200 text-gray-700 font-bold rounded disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-gray-300 focus:outline-none focus:shadow-outline"
     >
       {{ letter }}
