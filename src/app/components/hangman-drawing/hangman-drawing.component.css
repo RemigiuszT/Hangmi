@@ -1,3 +1,24 @@
 .hangman-drawing {
   margin-bottom: 1rem;
 }
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 0, 1000;
+  }
+  100% {
+    stroke-dasharray: 1000, 0;
+  }
+}
+
+.draw-animation {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2s forwards;
+}
+
+.draw-animation-slow {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 3s forwards;
+}

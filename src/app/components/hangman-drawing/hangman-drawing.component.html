@@ -16,6 +16,7 @@
     stroke="black"
     stroke-width="2"
     fill="none"
+    [ngClass]="{ 'draw-animation': lives <= 6 }"
   />
 
   <!-- Chest -->
@@ -27,6 +28,7 @@
     y2="180"
     stroke="black"
     stroke-width="2"
+    [ngClass]="{ 'draw-animation': lives <= 5 }"
   />
 
   <!-- Arms -->
@@ -38,6 +40,7 @@
     y2="160"
     stroke="black"
     stroke-width="2"
+    [ngClass]="{ 'draw-animation': lives <= 4 }"
   />
   <line
     *ngIf="lives <= 3"
@@ -47,6 +50,7 @@
     y2="160"
     stroke="black"
     stroke-width="2"
+    [ngClass]="{ 'draw-animation': lives <= 3 }"
   />
 
   <!-- Legs -->
@@ -58,6 +62,7 @@
     y2="210"
     stroke="black"
     stroke-width="2"
+    [ngClass]="{ 'draw-animation': lives <= 2 }"
   />
   <line
     *ngIf="lives <= 1"
@@ -67,5 +72,6 @@
     y2="210"
     stroke="black"
     stroke-width="2"
+    [ngClass]="{ 'draw-animation': lives <= 1 }"
   />
 </svg>
