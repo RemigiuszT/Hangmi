@@ -38,4 +38,8 @@
   .game-info {
     margin-top: -2px;
   }
+
+  .heart {
+    font-size: 1em;
+  }
 }

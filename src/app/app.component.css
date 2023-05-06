@@ -80,7 +80,7 @@ h1 {
 
 @media (max-width: 640px) {
   .container {
-    min-height: 100vh;
+    height: auto;
     padding: 2rem;
   }
 
