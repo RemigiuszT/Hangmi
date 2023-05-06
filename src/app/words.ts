@@ -90,12 +90,8 @@ export const words = [
   { word: 'europe', category: 'Geography' },
   { word: 'asia', category: 'Geography' },
   { word: 'africa', category: 'Geography' },
-  { word: 'north america', category: 'Geography' },
-  { word: 'south america', category: 'Geography' },
   { word: 'antarctica', category: 'Geography' },
   { word: 'australia', category: 'Geography' },
-  { word: 'mount everest', category: 'Geography' },
-  { word: 'grand canyon', category: 'Geography' },
 
   { word: 'art', category: 'Culture' },
   { word: 'literature', category: 'Culture' },
