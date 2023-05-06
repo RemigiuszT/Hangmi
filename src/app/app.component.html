@@ -19,16 +19,40 @@
       >{{ letter }}</span
     >
   </div>
-  <div class="letters grid grid-cols-9 gap-2 mb-6">
-    <button
-      *ngFor="let letter of letters"
-      (click)="guessLetter(letter)"
-      [disabled]="usedLetters.includes(letter)"
-      [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
-      class="py-2 bg-gray-200 text-gray-700 font-bold rounded disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-gray-300 focus:outline-none focus:shadow-outline"
-    >
-      {{ letter }}
-    </button>
+  <div class="letters grid mb-6">
+    <div class="row">
+      <button
+        *ngFor="let letter of row1"
+        (click)="guessLetter(letter)"
+        [disabled]="usedLetters.includes(letter)"
+        [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
+        class="letter-button"
+      >
+        {{ letter }}
+      </button>
+    </div>
+    <div class="row">
+      <button
+        *ngFor="let letter of row2"
+        (click)="guessLetter(letter)"
+        [disabled]="usedLetters.includes(letter)"
+        [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
+        class="letter-button"
+      >
+        {{ letter }}
+      </button>
+    </div>
+    <div class="row">
+      <button
+        *ngFor="let letter of row3"
+        (click)="guessLetter(letter)"
+        [disabled]="usedLetters.includes(letter)"
+        [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
+        class="letter-button"
+      >
+        {{ letter }}
+      </button>
+    </div>
   </div>
   <div class="actions">
     <button

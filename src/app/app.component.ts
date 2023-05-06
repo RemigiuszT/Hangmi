@@ -26,6 +26,10 @@ export class AppComponent {
   showWinPopup: boolean = false;
   results: any[] = [];
 
+  row1: string[] = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
+  row2: string[] = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
+  row3: string[] = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+
   private resultsSubscription: Subscription | null = null;
 
   constructor(
