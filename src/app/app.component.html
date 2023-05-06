@@ -65,7 +65,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let result of gameResultsService.results; let i = index">
+        <tr *ngFor="let result of results; let i = index">
           <td class="py-2">{{ i + 1 }}</td>
           <td class="py-2">{{ result.playerName }}</td>
           <td class="py-2">{{ result.score }}</td>

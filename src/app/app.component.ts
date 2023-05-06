@@ -4,6 +4,7 @@ import { GameResultsService } from './services/game-result.service';
 import { popUp } from './services/pop-up.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NicknameModalComponent } from './components/nickname-modal/nickname-modal.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,9 @@ export class AppComponent {
   showWord = false;
   showResults: boolean = false;
   showWinPopup: boolean = false;
+  results: any[] = [];
+
+  private resultsSubscription: Subscription | null = null;
 
   constructor(
     public gameResultsService: GameResultsService,
@@ -30,10 +34,17 @@ export class AppComponent {
     private dialog: MatDialog
   ) {
     this.startGame();
+    this.loadResults();
   }
 
   ngOnInit() {
     this.showNicknameModal();
+  }
+
+  ngOnDestroy() {
+    if (this.resultsSubscription) {
+      this.resultsSubscription.unsubscribe();
+    }
   }
 
   startGame(newGame: boolean = false) {
@@ -109,9 +120,15 @@ export class AppComponent {
 
   showResultsPopup() {
     this.gameResultsService.addResult(this.playerName, this.score);
-    this.gameResultsService.sortResults();
-
     this.showResults = true;
+  }
+
+  loadResults() {
+    this.resultsSubscription = this.gameResultsService
+      .getResults()
+      .subscribe((results) => {
+        this.results = results;
+      });
   }
 
   closeResultsPopup() {
@@ -120,7 +137,6 @@ export class AppComponent {
 
   addResult(playerName: string, score: number): void {
     this.gameResultsService.addResult(playerName, score);
-    this.gameResultsService.sortResults();
   }
 
   showNicknameModal() {
