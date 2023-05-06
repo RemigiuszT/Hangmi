@@ -25,7 +25,10 @@
         *ngFor="let letter of row1"
         (click)="guessLetter(letter)"
         [disabled]="usedLetters.includes(letter)"
-        [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
+        [ngClass]="{
+          'used-letter': usedLetters.includes(letter),
+          'button-active': activeLetter === letter
+        }"
         class="letter-button"
         [attr.data-letter]="letter"
       >
@@ -37,7 +40,10 @@
         *ngFor="let letter of row2"
         (click)="guessLetter(letter)"
         [disabled]="usedLetters.includes(letter)"
-        [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
+        [ngClass]="{
+          'used-letter': usedLetters.includes(letter),
+          'button-active': activeLetter === letter
+        }"
         class="letter-button"
         [attr.data-letter]="letter"
       >
@@ -49,7 +55,10 @@
         *ngFor="let letter of row3"
         (click)="guessLetter(letter)"
         [disabled]="usedLetters.includes(letter)"
-        [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
+        [ngClass]="{
+          'used-letter': usedLetters.includes(letter),
+          'button-active': activeLetter === letter
+        }"
         class="letter-button"
         [attr.data-letter]="letter"
       >

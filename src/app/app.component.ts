@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent {
   title = 'Hangmi';
   playerName: string = '';
+  activeLetter: string | null = null;
   hiddenWord: string[] = [];
   word = '';
   category = '';
@@ -26,9 +27,9 @@ export class AppComponent {
   showWinPopup: boolean = false;
   results: any[] = [];
 
-  row1: string[] = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
-  row2: string[] = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
-  row3: string[] = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+  row1: string[] = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
+  row2: string[] = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
+  row3: string[] = ['z', 'x', 'c', 'v', 'b', 'n', 'm'];
 
   private resultsSubscription: Subscription | null = null;
 
@@ -114,12 +115,16 @@ export class AppComponent {
         this.startGame(true);
       }, 3000);
     }
+    setTimeout(() => {
+      this.activeLetter = null;
+    }, 100);
   }
 
   processKeyPress(event: KeyboardEvent) {
     const letter = event.key.toLowerCase();
 
     if (this.letters.includes(letter)) {
+      this.activeLetter = letter.toUpperCase();
       this.guessLetter(letter);
     } else {
       event.preventDefault();
