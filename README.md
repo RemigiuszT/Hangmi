@@ -1,6 +1,6 @@
 # Hangmi
 
-Angular , Typescript, tailwind.
+Angular , Typescript, tailwind, firebase.
 
 demo: https://hangmi.netlify.app/
 
