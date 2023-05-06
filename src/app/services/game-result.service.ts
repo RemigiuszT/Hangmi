@@ -29,7 +29,7 @@ export class GameResultsService {
       .pipe(
         map((results: any[]) => {
           results.sort((a, b) => b.score - a.score);
-          return results;
+          return results.slice(0, 15);
         })
       );
   }
