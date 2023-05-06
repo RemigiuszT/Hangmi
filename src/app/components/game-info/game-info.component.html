@@ -3,9 +3,14 @@
     <app-hangman-drawing [lives]="lives"></app-hangman-drawing>
   </div>
 
-  <p class="mb-2">Category: {{ category }}</p>
-  <p class="mb-2">Lives: {{ lives }}</p>
-  <p class="mb-2">Used Letters: {{ usedLetters }}</p>
+  <p class="mb-2 category">Category: {{ category }}</p>
+  <p class="mb-2 lives">
+    Lives:
+    <span class="heart" *ngFor="let life of [].constructor(lives)"
+      >&hearts;</span
+    >
+  </p>
+  <p class="mb-2 used-letters">Used Letters: {{ usedLetters }}</p>
   <p class="mb-2" *ngIf="showWord">Your word: {{ word }}</p>
-  <p>Score: {{ score }}</p>
+  <p class="score">Score: {{ score }}</p>
 </div>

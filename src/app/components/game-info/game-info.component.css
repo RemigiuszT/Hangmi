@@ -1,3 +1,39 @@
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  color: #2d3748;
+}
+
+.category {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.lives {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.used-letters {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 1.4em;
+  margin-bottom: 0.5em;
+}
+
+.heart {
+  color: red;
+  font-size: 1.2em;
+  margin-left: 0.2em;
+}
+
 @media (max-width: 640px) {
   .game-info {
     margin-top: -2px;
