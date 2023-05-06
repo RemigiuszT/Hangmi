@@ -116,7 +116,7 @@ export class AppComponent {
     }
   }
 
-  onKeyDown(event: KeyboardEvent) {
+  processKeyPress(event: KeyboardEvent) {
     const letter = event.key.toLowerCase();
 
     if (this.letters.includes(letter)) {
@@ -154,11 +154,11 @@ export class AppComponent {
 
     dialogRef.componentInstance.onNicknameSaved.subscribe((nickname) => {
       this.playerName = nickname;
-      document.addEventListener('keydown', this.onKeyDown.bind(this));
+      document.addEventListener('keydown', this.processKeyPress.bind(this));
     });
 
     dialogRef.afterClosed().subscribe((nickname) => {
-      document.removeEventListener('keydown', this.onKeyDown.bind(this));
+      document.removeEventListener('keydown', this.processKeyPress.bind(this));
     });
   }
 }
