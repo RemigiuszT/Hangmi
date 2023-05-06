@@ -30,6 +30,15 @@
   box-shadow: 0 0 0 1px #a0a0a0 inset;
 }
 
+h1 {
+  font-family: "Permanent Marker", cursive;
+  font-size: 3rem;
+  text-align: center;
+  color: #2d3748;
+  text-shadow: 2px 2px 4px #999;
+  margin-bottom: 1.5rem;
+}
+
 @media (max-width: 640px) {
   .container h1 {
     display: none;
