@@ -116,16 +116,13 @@ export class AppComponent {
     }
   }
 
-  onKeydown(event: KeyboardEvent) {
+  onKeyDown(event: KeyboardEvent) {
     const letter = event.key.toLowerCase();
-    if (this.letters.includes(letter)) {
-      const letterButton: HTMLElement | null = document.querySelector(
-        `.letter-button:not([disabled])[data-letter='${letter.toUpperCase()}']`
-      );
 
-      if (letterButton) {
-        letterButton.click();
-      }
+    if (this.letters.includes(letter)) {
+      this.guessLetter(letter);
+    } else {
+      event.preventDefault();
     }
   }
 
@@ -157,11 +154,11 @@ export class AppComponent {
 
     dialogRef.componentInstance.onNicknameSaved.subscribe((nickname) => {
       this.playerName = nickname;
-      document.addEventListener('keydown', this.onKeydown.bind(this));
+      document.addEventListener('keydown', this.onKeyDown.bind(this));
     });
 
     dialogRef.afterClosed().subscribe((nickname) => {
-      document.removeEventListener('keydown', this.onKeydown.bind(this));
+      document.removeEventListener('keydown', this.onKeyDown.bind(this));
     });
   }
 }
