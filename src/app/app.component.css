@@ -79,6 +79,11 @@ h1 {
 }
 
 @media (max-width: 640px) {
+  .container {
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
   .container h1 {
     display: none;
   }
