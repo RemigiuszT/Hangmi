@@ -108,10 +108,11 @@ export class AppComponent {
       }, 2000);
     } else if (this.lives <= 0) {
       this.popUp.openSnackBar('Defeat!', 'red-snackbar');
+      this.hiddenWord = this.word.split('');
       setTimeout(() => {
         this.showResultsPopup();
         this.startGame(true);
-      }, 2000);
+      }, 3000);
     }
   }
 
