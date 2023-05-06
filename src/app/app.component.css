@@ -21,13 +21,25 @@
   border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 0.3rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.1s, transform 0.1s;
+}
+
+.letters button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.letters button:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  transform: translateY(2px);
 }
 
 .used-letter {
   opacity: 0.5;
   background-color: #a0a0a0;
-  color: #736b6b;
-  box-shadow: 0 0 0 1px #a0a0a0 inset;
+  color: #8d8282;
 }
 
 h1 {
@@ -37,6 +49,20 @@ h1 {
   color: #2d3748;
   text-shadow: 2px 2px 4px #999;
   margin-bottom: 1.5rem;
+}
+
+.new-game-button {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.new-game-button:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.new-game-button:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  transform: translateY(2px);
 }
 
 @media (max-width: 640px) {
