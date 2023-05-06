@@ -119,7 +119,13 @@ export class AppComponent {
   onKeydown(event: KeyboardEvent) {
     const letter = event.key.toLowerCase();
     if (this.letters.includes(letter)) {
-      this.guessLetter(letter);
+      const letterButton: HTMLElement | null = document.querySelector(
+        `.letter-button:not([disabled])[data-letter='${letter.toUpperCase()}']`
+      );
+
+      if (letterButton) {
+        letterButton.click();
+      }
     }
   }
 

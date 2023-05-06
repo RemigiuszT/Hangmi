@@ -27,6 +27,7 @@
         [disabled]="usedLetters.includes(letter)"
         [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
         class="letter-button"
+        [attr.data-letter]="letter"
       >
         {{ letter }}
       </button>
@@ -38,6 +39,7 @@
         [disabled]="usedLetters.includes(letter)"
         [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
         class="letter-button"
+        [attr.data-letter]="letter"
       >
         {{ letter }}
       </button>
@@ -49,6 +51,7 @@
         [disabled]="usedLetters.includes(letter)"
         [ngClass]="{ 'used-letter': usedLetters.includes(letter) }"
         class="letter-button"
+        [attr.data-letter]="letter"
       >
         {{ letter }}
       </button>
