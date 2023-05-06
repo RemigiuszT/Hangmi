@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { GameResultsService } from '../../services/game-result.service';
 
 @Component({
   selector: 'app-nickname-modal',
