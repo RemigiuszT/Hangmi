@@ -78,6 +78,51 @@ h1 {
   transform: translateY(2px);
 }
 
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.close-button {
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  color: #333;
+}
+
+.close-button:hover {
+  transform: scale(1.2);
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+}
+
+th,
+td {
+  padding: 0.5em 1em;
+}
+
+.results-container {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
 @media (max-width: 640px) {
   .container {
     height: auto;
